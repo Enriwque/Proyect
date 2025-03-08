@@ -1,13 +1,16 @@
 import { Router } from 'express';
+import { swaggerUi, swaggerSpec } from '../loaders/swagger.js';
 
 import users  from './users.js';
-import notas from './notas.js';
-import mango from './mango.js';
+import wikih from './wikih.js';
+import chapters from './chapters.js';
 
 const router = Router();
 
 router.use('/users', users);
-router.use('/notas', notas);
-router.use('/mongo', mango);
+router.use('/wikih', wikih);
+router.use('/chapters', chapters);
+
+router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 export default router;
