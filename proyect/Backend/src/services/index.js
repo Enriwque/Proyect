@@ -23,6 +23,9 @@ if (mongoose.models.ChapterEntry) {
 if (mongoose.models.WikiUsers) {
     mongoose.deleteModel('WikiUsers');
 }
+if (mongoose.models.PostEntry) {
+    mongoose.deleteModel('WikiUsers');
+}
 
 const charEntry = new Schema({
     title: String,
@@ -73,36 +76,25 @@ const wikiusers = new Schema ({
     rol: {type: String, enum: ['admin', 'user', 'editor']}
 })
 
+const postEntry = new Schema({
+    text: String,
+    images: [String],
+    date: { type: Date, default: Date.now },
+    comments: [{
+        text: String,
+        date: { type: Date, default: Date.now },
+        user: String,
+    }],
+    id: Number,
+    user: String
+});
+
 const CharEntry = mongoose.model('CharEntry', charEntry);
 const ChapterEntry = mongoose.model('ChapterEntry', chapterEntry);
 const WikiUsers = mongoose.model('WikiUsers', wikiusers);
+const PostEntry = mongoose.model('PostEntry', postEntry);
 
-export { CharEntry, ChapterEntry, WikiUsers };
-
-// const chars = [
-//     {
-//         title: 'Kone',
-//         content: 'mucho texto',
-//         date: new Date(),
-//         id: 1,
-//         titleImage: '../images/Kone.png',
-//         images: ['../images/Kone.png'],
-//         name: 'Kone',
-//     },
-// ]
-
-// const users = [
-//     {
-//         name: 'elpepe',
-//         email: 'pelado@gmail.com',
-//         password: '9101112',
-//     },
-//     {
-//         name: 'sergio',
-//         email: 'sergio@gmail.com',
-//         password: '5678',
-//     }
-// ];
+export { CharEntry, ChapterEntry, WikiUsers, PostEntry };
 
 // users.forEach(userData => {
 //     const user = new User(userData);

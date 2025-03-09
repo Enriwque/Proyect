@@ -1,4 +1,4 @@
-// eslint-disable-next-line no-unused-vars
+ // eslint-disable-next-line no-unused-vars
 import { Kone, Corven } from './texto.js';
 import { CharEntry } from '../services/index.js';
 
@@ -22,8 +22,8 @@ import { CharEntry } from '../services/index.js';
 //         },
 //         date: new Date(),
 //         id: 1,
-//         titleImage: '../../images/Kone.png',
-//         images: ['../../images/Kone.png'],
+//         titleImage: 'http://res.cloudinary.com/dlptdvxth/image/upload/v1741546249/x3dtm7njxuxhtp1sd4ap.png',
+//         images: ['http://res.cloudinary.com/dlptdvxth/image/upload/v1741546249/x3dtm7njxuxhtp1sd4ap.png'],
 //         name: 'Kone',
 //         age: 11,
 //         sexo: 'macho',
@@ -52,8 +52,8 @@ import { CharEntry } from '../services/index.js';
 //         },
 //         date: new Date(),
 //         id: 2,
-//         titleImage: '../../images/Corven.png',
-//         images: ['../../images/Corven.png'],
+//         titleImage: 'http://res.cloudinary.com/dlptdvxth/image/upload/v1741546467/wglicm0t86flg67gc2i0.png',
+//         images: ['http://res.cloudinary.com/dlptdvxth/image/upload/v1741546467/wglicm0t86flg67gc2i0.png'],
 //         name: 'Corven',
 //         age: 33,
 //         sexo: 'macho',
