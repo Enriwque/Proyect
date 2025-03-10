@@ -11,7 +11,7 @@ Esta API proporciona acceso a datos de usuarios, personajes, capítulos y public
 
 ### src
 
-![png](/proyect/Backend/images/@Captura%20de%20pantalla%202025-03-10%20202258.png)
+![png](/proyect/Backend/images/@Captura%20de%20pantalla%202025-03-10%20202748.png)
 
 ### Endpoints
 
