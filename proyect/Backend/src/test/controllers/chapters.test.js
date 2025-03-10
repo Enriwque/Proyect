@@ -3,6 +3,7 @@ import express from 'express';
 import { fetchChapters, fetchChapter, updateChapter, postChapter, deleteChapter } from '../../controllers/chapters.js';
 import { ChapterEntry } from '../../services/index.js';
 import jwt from 'jsonwebtoken';
+import { describe, test, expect, jest, beforeEach } from '@jest/globals';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -26,10 +27,13 @@ describe('Chapters Controller', () => {
 
     describe('fetchChapters', () => {
         test('should fetch all chapters', async () => {
-            ChapterEntry.find.mockResolvedValue([{ id: 1 }]);
+            ChapterEntry.find.sort.mockResolvedValue([]);
             const response = await request(app).get('/chapters');
             expect(response.status).toBe(200);
-            expect(response.body).toEqual([{ id: 1, title: 'Chapter 1' }]);
+            expect(response.body).toEqual([
+                { id: 1, title: 'Chapter 1', children: [] },
+                { id: 2, title: 'Chapter 2', children: [] }
+            ]);
         });
     });
 
