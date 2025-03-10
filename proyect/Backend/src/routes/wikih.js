@@ -4,11 +4,12 @@ const router = Router();
 
 /**
  * @swagger
- * /:
+ * /wikih:
  *   get:
- *     
+ *     tags:
+ *       - Characters
  *     servers:
- *       - url: http://localhost:3000/api/v1/wikih
+ *       - url: http://localhost:3000/api/v1/
  *     summary: Retrieve a list of characters
  *     responses:
  *       200:
@@ -18,11 +19,12 @@ router.get('/', fetchCharacters);
 
 /**
  * @swagger
- * /{id}:
+ * /wikih/{id}:
  *   get:
- *     
+ *     tags:
+ *       - Characters    
  *     servers:
- *       - url: http://localhost:3000/api/v1/wikih/
+ *       - url: http://localhost:3000/api/v1/
  *     summary: Retrieve a single character by ID
  *     parameters:
  *       - in: path
@@ -39,11 +41,12 @@ router.get('/:id', fetchCharacter);
 
 /**
  * @swagger
- * /update/{id}/{token}:
+ * /wikih/update/{id}/{token}:
  *   put:
- *     
+ *     tags:
+ *       - Characters    
  *     servers:
- *       - url: http://localhost:3000/api/v1/wikih/update/
+ *       - url: http://localhost:3000/api/v1/
  *     summary: Update a character by ID
  *     parameters:
  *       - in: path
@@ -121,11 +124,12 @@ router.put('/update/:id/:token', updateCharacter);
 
 /**
  * @swagger
- * /new/{token}:
+ * /wikih/new/{token}:
  *   post:
- *     
+ *     tags:
+ *       - Characters    
  *     servers:
- *       - url: http://localhost:3000/api/v1/wikih/new/
+ *       - url: http://localhost:3000/api/v1/
  *     summary: Create a new character
  *     parameters:
  *       - in: path
@@ -197,11 +201,12 @@ router.post('/new/:token', postCharacter);
 
 /**
  * @swagger
- * /delete/{id}/{token}:
+ * /wikih/delete/{id}/{token}:
  *   delete:
- *     
+ *     tags:
+ *       - Characters    
  *     servers:
- *       - url: http://localhost:3000/api/v1/wikih/delete/
+ *       - url: http://localhost:3000/api/v1/
  *     summary: Delete a character by ID
  *     parameters:
  *       - in: path

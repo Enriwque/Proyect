@@ -8,10 +8,31 @@ const options = {
       title: 'API Documentation',
       version: '3.0.0',
     },
-    
+    tags: [
+        {
+        name: 'Characters',
+        description: 'API for characters in the database'
+        },
+        {
+        name: 'Chapters',
+        description: 'API for chapters in the database'
+        },
+        {
+        name: 'Users',
+        description: 'API for users in the database'
+        },
+        {
+        name: 'Posts',
+        description: 'API for posts from users in the database'
+        },
+    ],
   },
   apis: [
-    './routes/*.js',
+    
+    './routes/chapters.js',
+    './routes/wikih.js',
+    './routes/users.js',
+    './routes/posts.js',
   ] 
 };
 

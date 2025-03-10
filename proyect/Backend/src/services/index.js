@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 const { Schema } = mongoose;
 
-mongoose.connect(`${process.env.MONGO_URL}`, {
+mongoose.connect('mongodb+srv://enrique:1234@cluster0.hzl2s.mongodb.net/', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });

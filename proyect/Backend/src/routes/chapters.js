@@ -4,10 +4,12 @@ const router = Router();
 
 /**
  * @swagger
- * /:
+ * /chapters:
  *   get:
+ *     tags:
+ *       - Chapters
  *     servers:
- *       - url: http://localhost:3000/api/v1/chapters
+ *       - url: http://localhost:3000/api/v1/
  *     summary: Retrieve a list of chapters
  *     responses:
  *       200:
@@ -17,10 +19,12 @@ router.get('/', fetchChapters);
 
 /**
  * @swagger
- * /{id}:
+ * /chapters/{id}:
  *   get:
+ *     tags:
+ *       - Chapters
  *     servers:
- *       - url: http://localhost:3000/api/v1/chapters/
+ *       - url: http://localhost:3000/api/v1/
  *     summary: Retrieve a single chapter by ID
  *     parameters:
  *       - in: path
@@ -37,10 +41,12 @@ router.get('/:id', fetchChapter);
 
 /**
  * @swagger
- * /update/{id}/{token}:
+ * /chapters/update/{id}/{token}:
  *   put:
+ *     tags:
+ *       - Chapters
  *     servers:
- *       - url: http://localhost:3000/api/v1/chapters/update/
+ *       - url: http://localhost:3000/api/v1/
  *     summary: Update a chapter by ID
  *     parameters:
  *       - in: path
@@ -86,10 +92,12 @@ router.put('/update/:id/:token', updateChapter);
 
 /**
  * @swagger
- * /new/{token}:
+ * /chapters/new/{token}:
  *   post:
+ *     tags:
+ *       - Chapters
  *     servers:
- *       - url: http://localhost:3000/api/v1/chapters/new/
+ *       - url: http://localhost:3000/api/v1/
  *     summary: Create a new chapter
  *     parameters:
  *       - in: path
@@ -129,10 +137,12 @@ router.post('/new/:token', postChapter);
 
 /**
  * @swagger
- * /delete/{id}/{token}:
+ * /chapters/delete/{id}/{token}:
  *   delete:
+ *     tags:
+ *       - Chapters
  *     servers:
- *       - url: http://localhost:3000/api/v1/chapters/delete/
+ *       - url: http://localhost:3000/api/v1/
  *     summary: Delete a chapter by ID
  *     parameters:
  *       - in: path
