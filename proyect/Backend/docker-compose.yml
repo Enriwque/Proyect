@@ -22,3 +22,8 @@ services:
       - "27017:27017"
     volumes:
       - ./data/db:/data/db
+  sonarqube:
+    image: "sonarqube"
+    ports:
+      - "2000:9000"
+      - "9092:9092"

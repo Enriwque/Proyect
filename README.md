@@ -11,47 +11,7 @@ Esta API proporciona acceso a datos de usuarios, personajes, capítulos y public
 
 ### src
 
-src/
-├── config/
-│   ├── db.js
-│   ├── env.js
-│   └── ...
-├── controllers/
-│   ├── userController.js
-│   ├── characterController.js
-│   ├── chapterController.js
-│   ├── postController.js
-│   └── ...
-├── models/
-│   ├── userModel.js
-│   ├── characterModel.js
-│   ├── chapterModel.js
-│   ├── postModel.js
-│   └── ...
-├── routes/
-│   ├── userRoutes.js
-│   ├── characterRoutes.js
-│   ├── chapterRoutes.js
-│   ├── postRoutes.js
-│   └── ...
-├── middlewares/
-│   ├── authMiddleware.js
-│   ├── errorMiddleware.js
-│   └── ...
-├── utils/
-│   ├── jwtUtils.js
-│   ├── emailUtils.js
-│   └── ...
-├── tests/
-│   ├── userTests.js
-│   ├── characterTests.js
-│   ├── chapterTests.js
-│   ├── postTests.js
-│   └── ...
-├── .env
-├── app.js
-├── server.js
-└── package.json
+![png](/proyect/Backend/images/@Captura%20de%20pantalla%202025-03-10%20202258.png)
 
 ### Endpoints
 
