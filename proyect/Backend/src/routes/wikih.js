@@ -9,7 +9,7 @@ const router = Router();
  *     tags:
  *       - Characters
  *     servers:
- *       - url: http://localhost:3000/api/v1/
+ *       - url: http://localhost:2005/api/v1/
  *     summary: Retrieve a list of characters
  *     responses:
  *       200:
@@ -24,7 +24,7 @@ router.get('/', fetchCharacters);
  *     tags:
  *       - Characters    
  *     servers:
- *       - url: http://localhost:3000/api/v1/
+ *       - url: http://localhost:2005/api/v1/
  *     summary: Retrieve a single character by ID
  *     parameters:
  *       - in: path
@@ -46,7 +46,7 @@ router.get('/:id', fetchCharacter);
  *     tags:
  *       - Characters    
  *     servers:
- *       - url: http://localhost:3000/api/v1/
+ *       - url: http://localhost:2005/api/v1/
  *     summary: Update a character by ID
  *     parameters:
  *       - in: path
@@ -129,7 +129,7 @@ router.put('/update/:id/:token', updateCharacter);
  *     tags:
  *       - Characters    
  *     servers:
- *       - url: http://localhost:3000/api/v1/
+ *       - url: http://localhost:2005/api/v1/
  *     summary: Create a new character
  *     parameters:
  *       - in: path
@@ -206,7 +206,7 @@ router.post('/new/:token', postCharacter);
  *     tags:
  *       - Characters    
  *     servers:
- *       - url: http://localhost:3000/api/v1/
+ *       - url: http://localhost:2005/api/v1/
  *     summary: Delete a character by ID
  *     parameters:
  *       - in: path
