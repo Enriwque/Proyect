@@ -15,6 +15,7 @@ export const Kone = {
 
       el_bosque: '',
       troncos_barrotes: '',
+      somos_amigos_y_somos_amigos_y: '',
       trivia: ['En las dos veces que Kone contó su historia a Jilg y a Corven, ambas veces siempre llamó a sus amigos que venían a su mansión "falsos amigos". Ambas veces le dijeron que ellos no tenían nada que ver, siendo que ellos no estaban pagando para verle, sino que los padres de los niños lo hacían y que ellos sentían cariño por él. Kone no entendió esto hasta que los conoció en persona.']
     }
 }
@@ -33,6 +34,7 @@ export const Corven = {
       trabaja_en_ti: '',
       el_bosque: '',
       troncos_barrotes: '',
+      somos_amigos_y_somos_amigos_y: '',
       trivia: ['']
   }
 }

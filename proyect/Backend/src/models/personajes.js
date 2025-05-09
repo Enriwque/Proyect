@@ -1,5 +1,5 @@
- // eslint-disable-next-line no-unused-vars
-import { Kone, Corven } from './texto.js';
+  
+// import { Kone, Corven } from './texto.js';
 import { CharEntry } from '../services/index.js';
 
 // const chars = [
@@ -11,12 +11,15 @@ import { CharEntry } from '../services/index.js';
 //             personality: `${Kone.personality}`,
 //             history_Plot: {
 //                 past: `${Kone.history_Plot.past}`,
-//                 Al_campo: `${Kone.history_Plot.Al_campo}`,
-//                 vuelta_ciudad: `${Kone.history_Plot.vuelta_ciudad}`,
+//                 al_campo: `${Kone.history_Plot.Al_campo}`,
+//                 vuelta_a_la_ciudad: `${Kone.history_Plot.vuelta_ciudad}`,
 //                 consorcio: `${Kone.history_Plot.consorcio}`,
-//                 trabaja_en_ti: `${Kone.history_Plot.trabaja_en_ti}`,
-//                 el_bosque: `${Kone.history_Plot.el_bosque}`,
-//                 troncos_barrotes: `${Kone.history_Plot.troncos_barrotes}`,
+//                 trabaja_en_ti_mismo: `${Kone.history_Plot.trabaja_en_ti}`,
+//                 el_ojo_del_bosque: `${Kone.history_Plot.el_bosque}`,
+//                 troncos_como_barrotes: `${Kone.history_Plot.troncos_barrotes}`
+//             },
+//             extra: {
+//                 somos_amigos_y_somos_amigos_y: `${Kone.history_Plot.somos_amigos_y_somos_amigos_y}`,
 //                 trivia: `${Kone.history_Plot.trivia}`
 //             }
 //         },
@@ -38,16 +41,17 @@ import { CharEntry } from '../services/index.js';
 //             appereance: `${Corven.appereance}`,
 //             personality: `${Corven.personality}`,
 //             history_Plot: {
-                
-//                     past: `${Corven.history_Plot.past}`,
-//                     Al_campo: `${Corven.history_Plot.Al_campo}`,
-//                     vuelta_ciudad: `${Corven.history_Plot.vuelta_ciudad}`,
-//                     consorcio: `${Corven.history_Plot.consorcio}`,
-//                     trabaja_en_ti: `${Corven.history_Plot.trabaja_en_ti}`,
-//                     el_bosque: `${Corven.history_Plot.el_bosque}`,
-//                     troncos_barrotes: `${Corven.history_Plot.troncos_barrotes}`,
-//                     trivia: `${Corven.history_Plot.trivia}`
-                
+//                 past: `${Corven.history_Plot.past}`,
+//                 al_campo: `${Corven.history_Plot.Al_campo}`,
+//                 vuelta_a_la_ciudad: `${Corven.history_Plot.vuelta_ciudad}`,
+//                 consorcio: `${Corven.history_Plot.consorcio}`,
+//                 trabaja_en_ti_mismo: `${Corven.history_Plot.trabaja_en_ti}`,
+//                 el_ojo_del_bosque: `${Corven.history_Plot.el_bosque}`,
+//                 troncos_como_barrotes: `${Corven.history_Plot.troncos_barrotes}`
+//             },
+//             extra: {
+//                 somos_amigos_y_somos_amigos_y: `${Corven.history_Plot.somos_amigos_y_somos_amigos_y}`,
+//                 trivia: `${Corven.history_Plot.trivia}`
 //             }
 //         },
 //         date: new Date(),

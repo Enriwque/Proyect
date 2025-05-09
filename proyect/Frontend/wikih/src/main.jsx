@@ -1,10 +1,45 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
 import App from './App.jsx'
+import Navbar from './components/general/Navbar.jsx'
+import Personajes from './pages/Personajes.jsx'
+import Capitulos from './pages/capitulos.jsx'
+import About from './pages/About.jsx'
+import Personaje from './pages/personaje.jsx'
+import Capitulo from './pages/Capitulo.jsx'
+import Contactos from './pages/contactos.jsx'
+import Chat from './pages/chat.jsx'
+
+import './index.css'
+import Footer from './components/general/Footer.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Chango&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+    </style>
+    <Navbar />
+    <div className='container'>
+      <div className='content'>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<App />} />
+            <Route path="/personajes" element={<Personajes />} />
+            <Route path="/personaje/:id" element={<Personaje />} />
+            <Route path="/capitulos" element={<Capitulos />} />
+            <Route path="/capitulo/:id" element={<Capitulo />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contactos" element={<Contactos />} />
+            <Route path="/chat" element={<Chat />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </div>
+    <footer>
+      <Footer />
+    </footer>
+  </StrictMode>
 )

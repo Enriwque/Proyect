@@ -1,13 +1,22 @@
-import nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
-dotenv.config();
+import emailjs from 'emailjs-com';
 
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    }
-});
+function youGotMail(name, message, eTmail, link) {
+    const eFmail = 'spreadtheh@gmail.com'
+    
+        const templateParams = {
+            from_name: name,
+            from_email: eFmail,
+            message: message,
+            to_email: eTmail,
+            link: link
+        };
 
-export default transporter;
+        emailjs.send('service_wikih', 'template_87a4uj', templateParams, 'sooapWbX8EfIHQ0FK')
+            .then((response) => {
+                console.log('SUCCESS!', response.status, response.text);
+            }, (err) => {
+                console.log('FAILED...', err);
+            });
+    };
+
+export { youGotMail };

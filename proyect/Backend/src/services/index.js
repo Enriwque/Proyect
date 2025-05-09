@@ -35,12 +35,15 @@ const charEntry = new Schema({
         personality: String,
         history_Plot: {
             past: String, 
-            Al_campo: String, 
-            vuelta_ciudad: String, 
+            al_campo: String, 
+            vuelta_a_la_ciudad: String, 
             consorcio: String, 
-            trabaja_en_ti: String, 
-            el_bosque: String, 
-            troncos_barrotes: String, 
+            trabaja_en_ti_mismo: String, 
+            el_ojo_del_bosque: String, 
+            troncos_como_barrotes: String, 
+        },
+        extra: {
+            somos_amigos_y_somos_amigos_y: String,
             trivia: [String]
         }
     },
