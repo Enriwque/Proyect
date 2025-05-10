@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 
-import useFetch from '../services/fetch';
+// import useFetch from '../services/fetch';
 
 export default function InicioSesion() {
     const [email, setEmail] = useState('');
@@ -16,42 +16,48 @@ export default function InicioSesion() {
     }
 
     // const fetchData = useFetch('https://proyect-7woy.onrender.com/api/v1/users/login', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //         'Accept': 'application/json'
-    //     },
     //     body: JSON.stringify({
     //         email,
     //         password
     //     })
     // });
 
-    const submit = (e) => {
-        e.preventDefault();
-        if (password.length < 4) {
-            toast.error('La contraseña debe tener al menos 4 caracteres', toastTweaks)
+    const submit = async (e) => {
+    e.preventDefault();
+
+    if (password.length < 4) {
+        toast.error('La contraseña debe tener al menos 4 caracteres', toastTweaks);
+        return;
+    }
+
+    if (!email.includes('@') || !email.includes('.com')) {
+        toast.error('El email no es válido', toastTweaks);
+        return;
+    }
+
+    try {
+        const response = await fetch('https://proyect-7woy.onrender.com/api/v1/users/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password }),
+        });
+
+        const res = await response.json();
+
+        if (res.success) {
+            toast.success('Inicio de sesión exitoso', toastTweaks);
+            localStorage.setItem('token', res.token);
+            window.location.href = '/';
+        } else {
+            toast.error('Error al iniciar sesión', toastTweaks);
         }
-        if (!email.includes('@') || !email.includes('.com')) {
-            toast.error('El email no es válido', toastTweaks)
-        }
-        // try {
-        //     fetchData.result.then((res) => {
-        //         if (res.success) {
-        //             toast.success('Inicio de sesión exitoso', toastTweaks)
-        //             localStorage.setItem('token', res.token);
-        //             window.location.href = '/';
-        //         } else {
-        //             toast.error('Error al iniciar sesión', toastTweaks)
-        //         }
-        //     }
-        // )}
-        // catch (error) {
-        //     toast.error('Error al iniciar sesión', toastTweaks)
-        //     console.log(error);
-            
-        // }
-             }
+    } catch (error) {
+        toast.error('Error al iniciar sesión', toastTweaks);
+        console.error(error);
+    }
+};
 
     return (
         <div className="container-signin">
