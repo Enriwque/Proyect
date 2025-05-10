@@ -49,6 +49,7 @@ export default function InicioSesion() {
         if (res.success) {
             toast.success('Inicio de sesión exitoso', toastTweaks);
             localStorage.setItem('token', res.token);
+            localStorage.setItem('user', JSON.stringify(res.user));
             window.location.href = '/';
         } else {
             toast.error('Error al iniciar sesión', toastTweaks);
