@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 dotenv.config();
-import { youGotMail } from "../services/gmail.js"
+import transporter from "../services/gmail.js";
 
 async function fetchUsers(req, res) {
     res.send(await usuarios());
@@ -96,7 +96,17 @@ async function frPassword(req, res) {
         userId: user.id
     }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-    youGotMail(user.name, req.body.message, req.body.email, `http://localhost:2005/api/v1/users/forgot/${reseToken}`);
+    await transporter.sendMail({
+        from: process.env.EMAIL_USER,
+        to: req.body.email,
+        subject: 'Crea una nueva contraseña',
+        text: "",
+        html: `
+        <p>Haz click en el enlace de abajo para recuperar tu contraseña:</p>
+        <br>
+        <a href="http://localhost:2005/api/v1/users/forgot/${reseToken}">Recuperar contraseña</a>
+        `
+    });
     
     res.status(201).send({ message: 'Email sent', token: reseToken });
 }

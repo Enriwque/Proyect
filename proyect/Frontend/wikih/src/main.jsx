@@ -11,6 +11,7 @@ import Personaje from './pages/personaje.jsx'
 import Capitulo from './pages/Capitulo.jsx'
 import Contactos from './pages/contactos.jsx'
 import Chat from './pages/chat.jsx'
+import InicioSesion from './pages/InicioSesion.jsx'
 
 import './index.css'
 import Footer from './components/general/Footer.jsx'
@@ -34,6 +35,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/about" element={<About />} />
             <Route path="/contactos" element={<Contactos />} />
             <Route path="/chat" element={<Chat />} />
+            <Route path="/sesion" element={<InicioSesion />} />
           </Routes>
         </BrowserRouter>
       </div>
