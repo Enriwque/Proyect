@@ -19,7 +19,7 @@ export default function InicioSesion() {
     //     method: 'POST',
     //     headers: {
     //         'Content-Type': 'application/json',
-    //         'Access-Control-Allow-Origin': *
+    //         'Accept': 'application/json'
     //     },
     //     body: JSON.stringify({
     //         email,
@@ -38,20 +38,19 @@ export default function InicioSesion() {
         // try {
         //     fetchData.result.then((res) => {
         //         if (res.success) {
-        //             toast.success('Inicio de sesión exitoso', toastTweaks);
+        //             toast.success('Inicio de sesión exitoso', toastTweaks)
         //             localStorage.setItem('token', res.token);
+        //             window.location.href = '/';
+        //         } else {
+        //             toast.error('Error al iniciar sesión', toastTweaks)
+        //         }
+        //     }
+        // )}
+        // catch (error) {
+        //     toast.error('Error al iniciar sesión', toastTweaks)
+        //     console.log(error);
             
-        //             // Redirige con el token en la URL
-        //              const token = encodeURIComponent(res.token);
-        //             window.location.href = `/sesion?token=${token}`;
-        //          } else {
-        //             toast.error('Error al iniciar sesión', toastTweaks);
-        //         }
-        //         });
-        //         } catch (error) {
-        //             toast.error('Error al iniciar sesión', toastTweaks);
-        //             console.log(error);
-        //         }
+        // }
              }
 
     return (

@@ -4,7 +4,10 @@ import cors from 'cors';
  import routes from '../routes/index.js';
 
 export default (expressApp) => {
-expressApp.use(cors());
+expressApp.use(cors({
+    origin: 'http://localhost:5173', // tu frontend en desarrollo
+    credentials: true, // si usas cookies o auth headers
+}));
  expressApp.use(express.json({ limit: '50mb' }));
 expressApp.use(express.urlencoded({ limit: '50mb', extended: true }));
  expressApp.use('/api/v1', routes);
