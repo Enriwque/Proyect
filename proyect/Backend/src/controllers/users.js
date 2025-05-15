@@ -38,6 +38,7 @@ async function updateUser(req, res) {
 }
 
 async function register(req, res) {
+    let pass = true
     const user = await WikiUsers.findOne({ email: req.body.email });
     const newUser = {
         name: req.body.name,
@@ -53,13 +54,21 @@ async function register(req, res) {
         newUser.rol = 'admin';
     }else if(newUser.rol != 'admin' && newUser.rol != 'user' && newUser.rol != 'editor'){
         res.status(400).send('Invalid rol');
+        pass = false;
     }else if (user){
         res.status(400).send('User already exists');
+        pass = false;
     }
 
-    const usuario = new WikiUsers(newUser);
+    if (pass){
+        const usuario = new WikiUsers(newUser);
         await usuario.save();
         res.status(201).json({ success: true, message: "Usuario creado" });
+    }else{
+        res.status(400).send('try again');
+    }
+
+    
 }
 
 async function deleteUser(req, res) {

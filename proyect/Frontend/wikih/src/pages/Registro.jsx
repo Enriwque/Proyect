@@ -54,7 +54,7 @@ export default function Registro() {
         }
     } else {
         const text = await response.text(); // leer como texto
-        toast.error('Respuesta inesperada del servidor', toastTweaks);
+        toast.error('Es posible que ya hayas estado aquí...', toastTweaks);
         console.error('Respuesta no JSON:', text);
     }
 } catch (error) {
