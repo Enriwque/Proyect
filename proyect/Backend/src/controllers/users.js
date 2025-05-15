@@ -55,11 +55,11 @@ async function register(req, res) {
         res.status(400).send('Invalid rol');
     }else if (user){
         res.status(400).send('User already exists');
-    }else{
-        const user = new WikiUsers(newUser);
-        await user.save();
-        res.status(201).json({ success: true, message: "Usuario creado" });
     }
+
+    const usuario = new WikiUsers(newUser);
+        await usuario.save();
+        res.status(201).json({ success: true, message: "Usuario creado" });
 }
 
 async function deleteUser(req, res) {
