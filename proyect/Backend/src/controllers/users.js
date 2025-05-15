@@ -58,7 +58,7 @@ async function register(req, res) {
     }else{
         const user = new WikiUsers(newUser);
         await user.save();
-        res.status(201).send(user);
+        res.status(201).json({ success: true, message: "Usuario creado" });
     }
 }
 
