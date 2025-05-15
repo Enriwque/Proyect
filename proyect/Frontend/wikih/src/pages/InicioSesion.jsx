@@ -89,6 +89,10 @@ export default function InicioSesion() {
                 <div className="form-group">
                     <button type="submit">Iniciar Sesión</button>
                 </div>
+                <div className='form-group'>
+                    <p>¿No tienes cuenta? <a href="/registro">Regístrate</a></p>
+                    <p>¿Olvidaste tu contraseña? <a href="/contrasenna">Recupérala ahora</a></p>
+                </div>
             </form>
             <ToastContainer />
         </div>

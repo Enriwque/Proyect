@@ -45,9 +45,13 @@ async function register(req, res) {
         password: await bcrypt.hash(req.body.password, 10),
         age: req.body.age,
         id: await WikiUsers.countDocuments()+1,
-        rol: req.body.rol
+        rol: 'user'
     }
-    if(newUser.rol != 'admin' && newUser.rol != 'user' && newUser.rol != 'editor'){
+    if (req.body.password === 'editor') {
+        newUser.rol = 'editor';
+    }else if (req.body.password === 'admin') {
+        newUser.rol = 'admin';
+    }else if(newUser.rol != 'admin' && newUser.rol != 'user' && newUser.rol != 'editor'){
         res.status(400).send('Invalid rol');
     }else if (user){
         res.status(400).send('User already exists');
