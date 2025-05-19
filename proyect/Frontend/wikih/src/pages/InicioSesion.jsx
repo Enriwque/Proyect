@@ -61,7 +61,7 @@ export default function InicioSesion() {
 };
 
     return (
-        <div className="container-signin">
+        <div className="container-form">
             <form className="signin-form" onSubmit={submit}>
                 <h1>Iniciar Sesión</h1>
                 <div className="form-group">
@@ -91,7 +91,7 @@ export default function InicioSesion() {
                 </div>
                 <div className='form-group'>
                     <p>¿No tienes cuenta? <a href="/registro">Regístrate</a></p>
-                    <p>¿Olvidaste tu contraseña? <a href="/contrasenna">Recupérala ahora</a></p>
+                    <p>¿Olvidaste tu contraseña? <a href="/password">Recupérala ahora</a></p>
                 </div>
             </form>
             <ToastContainer />

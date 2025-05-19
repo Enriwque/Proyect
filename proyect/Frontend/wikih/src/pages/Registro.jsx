@@ -66,7 +66,7 @@ export default function Registro() {
 };
 
     return (
-        <div className="container-register">
+        <div className="container-form">
             <form className="register-form" onSubmit={submit}>
                 <div className="form-group">
                     <label htmlFor="name">Nombre de usuario:</label>

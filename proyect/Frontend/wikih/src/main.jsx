@@ -14,6 +14,7 @@ import Chat from './pages/chat.jsx'
 import InicioSesion from './pages/InicioSesion.jsx'
 import Resultados from './pages/Resultados.jsx'
 import Registro from './pages/Registro.jsx'
+import PasswordFirst from './pages/PasswordFirst.jsx'
 
 import './index.css'
 import Footer from './components/general/Footer.jsx'
@@ -42,6 +43,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/sesion" element={<InicioSesion />} />
             <Route path="/resultados/:resCharIds/:resChapIds" element={<Resultados />} />
             <Route path="/registro" element={<Registro />} />
+            <Route path="/password" element={<PasswordFirst />} />
           </Routes>
         </BrowserRouter>
       </div>
