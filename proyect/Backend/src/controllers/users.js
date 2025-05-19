@@ -117,7 +117,7 @@ async function frPassword(req, res) {
         html: `
         <p>Haz click en el enlace de abajo para recuperar tu contraseña:</p>
         <br>
-        <a href="http://localhost:2005/api/v1/users/forgot/${reseToken}">Recuperar contraseña</a>
+        <a href="http://localhost:5173/password/${reseToken}">Recuperar contraseña</a>
         `
     });
     

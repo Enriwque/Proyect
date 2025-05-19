@@ -15,6 +15,7 @@ import InicioSesion from './pages/InicioSesion.jsx'
 import Resultados from './pages/Resultados.jsx'
 import Registro from './pages/Registro.jsx'
 import PasswordFirst from './pages/PasswordFirst.jsx'
+import PasswordSecond from './pages/PasswordSecond.jsx'
 
 import './index.css'
 import Footer from './components/general/Footer.jsx'
@@ -44,6 +45,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/resultados/:resCharIds/:resChapIds" element={<Resultados />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/password" element={<PasswordFirst />} />
+            <Route path="/password/:token" element={<PasswordSecond />} />
           </Routes>
         </BrowserRouter>
       </div>
