@@ -106,8 +106,10 @@ async function frPassword(req, res) {
     if (!user) {res.status(400).send('Email not registered')};
 
     const reseToken = jwt.sign({
-        userId: user._id
+        userEmail: user.email
     }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+    const encodedToken = encodeURIComponent(reseToken);
 
     await transporter.sendMail({
         from: process.env.EMAIL_USER,
@@ -117,7 +119,7 @@ async function frPassword(req, res) {
         html: `
         <p>Haz click en el enlace de abajo para recuperar tu contraseña:</p>
         <br>
-        <a href="http://localhost:5173/password/${reseToken}">Recuperar contraseña</a>
+        <a href="http://localhost:5173/password/${encodedToken}">Recuperar contraseña</a>
         `
     });
     
@@ -130,7 +132,9 @@ async function resPassword(req, res) {
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        const user = await WikiUsers.findOne({ id: decoded.userId });
+        console.log(decoded);
+        
+        const user = await WikiUsers.findOne({ email: decoded.userEmail });
 
         if (!user) {
             return res.status(400).send('Invalid token or user does not exist');

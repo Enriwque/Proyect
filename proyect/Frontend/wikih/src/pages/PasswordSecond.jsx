@@ -15,8 +15,8 @@ export default function PasswordSecond() {
         closeButton: false
     }
 
-    const reseToken = window.location.pathname.split('/password/')[1];
-    // console.log(decodeURIComponent(reseToken));
+    const reseToken = decodeURIComponent(window.location.pathname.split('/password/')[1]);
+    console.log(decodeURIComponent(reseToken));
     console.log(JSON.parse(atob(reseToken.split('.')[1])));
 
 const submit = async (e) => {
@@ -33,10 +33,9 @@ const submit = async (e) => {
     }
 
     try {
-        const response = await fetch(`https://proyect-7woy.onrender.com/api/v1/users/forgot`, {
+        const response = await fetch(`https://proyect-7woy.onrender.com/api/v1/users/forgot/${reseToken}`, {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${reseToken}`,
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ password })
@@ -47,7 +46,7 @@ const submit = async (e) => {
         if (contentType && contentType.includes('application/json')) {
             const res = await response.json();
 
-            if (response.ok && res.success) {
+            if (res.success) {
                 toast.success('Cambio exitoso', toastTweaks);
                 window.location.href = '/sesion';
             } else {
