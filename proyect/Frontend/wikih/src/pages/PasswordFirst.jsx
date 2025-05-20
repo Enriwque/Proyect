@@ -41,13 +41,9 @@ export default function PasswordFirst() {
                 toast.success('Envio exitoso', toastTweaks);
                 window.location.href = '/sesion';
             } else {
-                toast.error(res.message || 'Error en el envio del link', toastTweaks);
+                toast.success(res.message || 'Error en el envio del link', toastTweaks);
                 console.error('Respuesta del servidor:', res);
             }
-        } else {
-            const text = await response.text(); // leer como texto
-            toast.error('Es posible que ya hayas estado aquí...', toastTweaks);
-            console.error('Respuesta no JSON:', text);
         }
     } catch (error) {
         toast.error('Error al conectar con el servidor', toastTweaks);

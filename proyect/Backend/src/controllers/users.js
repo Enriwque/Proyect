@@ -102,35 +102,47 @@ async function login(req, res) {
 }
 
 async function frPassword(req, res) {
-    const user = await WikiUsers.findOne({ email: req.body.email });
-    if (!user) {res.status(400).send('Email not registered')};
+    const { email } = req.body;
 
-    const reseToken = jwt.sign({
-        userId: user.id
-    }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    if (!email || typeof email !== 'string') {
+        return res.status(400).send('Invalid email');
+    }
+
+    const user = await WikiUsers.findOne({ email });
+    if (!user) return res.status(400).send('Email not registered');
+
+    const reseToken = jwt.sign(
+        { id: user._id }, // ✅ cambiamos a "id"
+        process.env.JWT_SECRET,
+        { expiresIn: '1h' }
+    );
 
     await transporter.sendMail({
         from: process.env.EMAIL_USER,
-        to: req.body.email,
+        to: email,
         subject: 'Crea una nueva contraseña',
-        text: "",
         html: `
-        <p>Haz click en el enlace de abajo para recuperar tu contraseña:</p>
-        <br>
-        <a href="http://localhost:5173/password/${reseToken}">Recuperar contraseña</a>
+            <p>Haz click en el enlace de abajo para recuperar tu contraseña:</p>
+            <a href="${process.env.FRONTEND_URL}/password/${reseToken}">
+                Recuperar contraseña
+            </a>
         `
     });
-    
-    res.status(201).send({ message: 'Email sent', token: reseToken });
+
+    res.status(201).send({ message: 'Email sent' });
 }
 
 async function resPassword(req, res) {
-    const newPassword = req.body.newPassword;
+    const { newPassword } = req.body;
     const token = req.params.reseToken;
+
+    if (!newPassword || typeof newPassword !== 'string' || newPassword.length < 6) {
+        return res.status(400).send('Invalid or too short password');
+    }
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        const user = await WikiUsers.findOne({ id: decoded.userId });
+        const user = await WikiUsers.findById(decoded.id); // ✅ usamos decoded.id correctamente
 
         if (!user) {
             return res.status(400).send('Invalid token or user does not exist');
@@ -140,9 +152,9 @@ async function resPassword(req, res) {
         await user.save();
 
         res.status(200).send('Password updated successfully');
-    // eslint-disable-next-line no-unused-vars
     } catch (error) {
-        res.status(400).send('Invalid token');
+        console.error('Error verifying token or updating password:', error);
+        res.status(400).send('Invalid or expired token');
     }
 }
 
