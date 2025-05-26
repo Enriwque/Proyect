@@ -16,7 +16,10 @@ async function fetchPost(req, res) {
 }
 
 async function createPost(req, res) {
-    const { token } = req.params;
+    
+    try {
+
+        const { token } = req.params;
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const user = await WikiUsers.findOne({ id: decoded.userId });
@@ -36,6 +39,10 @@ async function createPost(req, res) {
     const post = new PostEntry(newPost);
     await post.save();
     res.status(201).send(post);
+
+    } catch (error) {
+        console.error('Error creating post:', error);
+    }   
 }
 
 async function deletePost(req, res) {
