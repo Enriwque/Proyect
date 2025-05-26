@@ -20,6 +20,27 @@ import PasswordSecond from './pages/PasswordSecond.jsx'
 import './index.css'
 import Footer from './components/general/Footer.jsx'
 
+const token = localStorage.getItem('token');
+const timestamp = localStorage.getItem('token_timestamp');
+
+if (token && timestamp) {
+  const ahora = Date.now();
+  const haceCuanto = ahora - parseInt(timestamp); // diferencia en milisegundos
+  const limite = 24 * 60 * 60 * 1000; // 24 horas en milisegundos
+
+  if (haceCuanto > limite) {
+    // Ha pasado más de 24 horas: eliminar los datos
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    localStorage.removeItem('token_timestamp');
+    console.log('Token expirado y eliminado');
+  } else {
+    console.log('Token válido');
+  }
+} else {
+  console.log('No hay token guardado');
+}
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <style>

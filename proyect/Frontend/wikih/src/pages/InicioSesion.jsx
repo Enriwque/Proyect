@@ -7,6 +7,8 @@ export default function InicioSesion() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const timestamp = Date.now();
+
     const toastTweaks = {
         theme: "colored",
         position: "bottom-right",
@@ -14,13 +16,6 @@ export default function InicioSesion() {
         newestOnTop: true,
         closeButton: false
     }
-
-    // const fetchData = useFetch('https://proyect-7woy.onrender.com/api/v1/users/login', {
-    //     body: JSON.stringify({
-    //         email,
-    //         password
-    //     })
-    // });
 
     const submit = async (e) => {
     e.preventDefault();
@@ -50,6 +45,7 @@ export default function InicioSesion() {
             toast.success('Inicio de sesión exitoso', toastTweaks);
             localStorage.setItem('token', res.token);
             localStorage.setItem('user', JSON.stringify(res.user));
+            localStorage.setItem('token_timestamp', timestamp.toString());
             window.location.href = '/';
         } else {
             toast.error('Error al iniciar sesión', toastTweaks);

@@ -3,6 +3,8 @@ import { toast, ToastContainer } from 'react-toastify';
 
 import '../page.css'
 
+// TODO
+
 export default function PasswordSecond() { 
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');

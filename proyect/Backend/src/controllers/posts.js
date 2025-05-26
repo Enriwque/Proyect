@@ -1,6 +1,7 @@
 import { wikiPosts } from "../models/Posts.js";
 import { PostEntry } from "../services/index.js";
 import { WikiUsers } from "../services/index.js";
+import { localUpload } from "../services/cloud.js";
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -31,6 +32,7 @@ async function createPost(req, res) {
         id: await PostEntry.countDocuments() + 1
     }
 
+    newPost.images = await localUpload(newPost.images);
     const post = new PostEntry(newPost);
     await post.save();
     res.status(201).send(post);

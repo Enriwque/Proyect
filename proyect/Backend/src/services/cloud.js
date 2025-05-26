@@ -8,9 +8,15 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET || '2Ft5HSypyWNMxRSocj8Tul6qyms'
 })
 
-async function localUpload() {
-    const results = await cloudinary.uploader.upload('../../images/Corven.png');
-    console.log(results);
-}
+export async function localUpload(strings) {
+    let results = []
+    let uploadPromises = [];
 
-localUpload();
+    for (let i = 0; i < strings.length; i++) {
+        results = await cloudinary.uploader.upload(strings[i]);
+        uploadPromises.push(results);
+        console.log(results);
+    }
+
+    return uploadPromises.map(result => result.secure_url);
+}
