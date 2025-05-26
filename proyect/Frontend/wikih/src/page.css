@@ -233,6 +233,7 @@ a:hover {
   padding: 10px;
   margin: 10px;
   font-size: 13px;
+  background-color: #ffffff;
 }
 
 .comment p {
@@ -256,4 +257,31 @@ a:hover {
 .chat-container img {
   max-width: 500px;
   max-width: 500px;
+}
+
+.toggle-comments {
+  background: none;
+  border: none;
+}
+
+.toggle-comments img {
+  width: 20px;
+}
+
+.toggle-comments:hover {
+  cursor: pointer;
+}
+
+.toggle-comment {
+  margin-inline: 10px;
+  margin-block: 10px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  background-color: #d8ff7e;
+  border: 1px solid #b3ff00;
+}
+
+.toggle-comment:hover {
+  background-color: #b2ff00;
+  border: 1px solid #587e00;
 }

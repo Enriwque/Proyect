@@ -1,4 +1,4 @@
-import Logotipo from "../../assets/Logotipo letra.png";
+import Logotipo from "../../assets/icons/Logotipo letra.png";
 
 import '../../index.css';
 
