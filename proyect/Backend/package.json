@@ -26,6 +26,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.5",
     "morgan": "~1.9.1",
+    "multer": "^2.0.0",
     "nodemailer": "^6.10.0",
     "path": "^0.12.7",
     "sonarqube": "^0.0.1",

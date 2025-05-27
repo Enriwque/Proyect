@@ -93,35 +93,40 @@ export default function Chat() {
     };
 
     const submitPost = () => {
-        if (!postText) return;
+    if (!postText) return;
 
-        fetch(`https://proyect-7woy.onrender.com/api/v1/posts/post/${token}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({ text: postText, images: previewURL ? [previewURL] : [] })
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.success) {
-                    setShowPostPopup(false);
-                    setPostText('');
-                    setImageFile(null);
-                    setPreviewURL('');
-                    toast.success('Post enviado', toastTweaks);
-                    window.location.reload();
-                } else {
-                    window.location.reload();
-                    toast.error('Error al crear el post', toastTweaks);
-                }
-            })
-            .catch(err => {
-                console.error('Error:', err);
+    const formData = new FormData();
+    formData.append('text', postText);
+    if (imageFile) {
+        formData.append('image', imageFile); // el campo debe coincidir con req.file
+    }
+
+    fetch(`http://localhost:2005/api/v1/posts/post/${token}`, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}` // NO pongas Content-Type, fetch lo pone solo con boundary
+        },
+        body: formData
+    })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                setShowPostPopup(false);
+                setPostText('');
+                setImageFile(null);
+                setPreviewURL('');
+                toast.success('Post enviado', toastTweaks);
+                window.location.reload();
+            } else {
+                window.location.reload();
                 toast.error('Error al crear el post', toastTweaks);
-            });
-    };
+            }
+        })
+        .catch(err => {
+            console.error('Error:', err);
+            toast.error('Error al crear el post', toastTweaks);
+        });
+};
 
     function formatDate(initialDate) {
         const date = new Date(initialDate);

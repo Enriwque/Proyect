@@ -1,6 +1,10 @@
 import Router from 'express';
 import { fetchPosts, fetchPost, commentOnPost, createPost, deletePost } from '../controllers/posts.js';
 
+import multer from 'multer';
+
+const upload = multer({ storage: multer.memoryStorage() });
+
 const router = Router();
 
 /**
@@ -110,7 +114,7 @@ router.post('/comment/:id/:token', commentOnPost);
  *       201:
  *         description: Post created
  */
-router.post('/post/:token', createPost);
+router.post('/post/:token', upload.single('image'), createPost);
 
 /**
  * @swagger
