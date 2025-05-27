@@ -73,7 +73,7 @@ async function register(req, res) {
 
 async function deleteUser(req, res) {
     await WikiUsers.deleteOne({ id: req.params.id });
-    res.send(`User ${req.params.id} deleted`);
+    res.status(200).json({ success: true, message: 'Usuario eliminado correctamente' });
 }
 
 async function login(req, res) {

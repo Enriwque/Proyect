@@ -101,10 +101,10 @@ export default function Chat() {
         formData.append('image', imageFile); // el campo debe coincidir con req.file
     }
 
-    fetch(`http://localhost:2005/api/v1/posts/post/${token}`, {
+    fetch(`https://proyect-7woy.onrender.com/api/v1/posts/post/${token}`, {
         method: 'POST',
         headers: {
-            'Authorization': `Bearer ${token}` // NO pongas Content-Type, fetch lo pone solo con boundary
+            'Authorization': `Bearer ${token}` 
         },
         body: formData
     })
@@ -139,7 +139,7 @@ export default function Chat() {
     return (
         <div className="chat-page" id='popup-overlay'>
             <div className="profile-bar">
-                <p>Bienvenido, {user.name}</p>
+                <p>Bienvenido, <a href="/chat/perfil">{user.name}</a></p>
 
                 {showPopup && (
                     <div className="popup-overlay">
@@ -209,12 +209,14 @@ export default function Chat() {
 
                         {openPostIndex === index && (
                             <div className="comments">
-                                <button
+                                <a href='#popup-overlay'>
+                                    <button
                                     className='toggle-comment'
                                     onClick={() => handleAddComment(post.id)}
                                 >
                                     Añadir comentario
                                 </button>
+                                </a>
                                 {post.comments.map((comment, cIndex) => (
                                     <div key={cIndex} className="comment">
                                         <p>{comment.user}</p>

@@ -16,6 +16,7 @@ import Resultados from './pages/Resultados.jsx'
 import Registro from './pages/Registro.jsx'
 import PasswordFirst from './pages/PasswordFirst.jsx'
 import PasswordSecond from './pages/PasswordSecond.jsx'
+import Perfil from './pages/Perfil.jsx'
 
 import './index.css'
 import Footer from './components/general/Footer.jsx'
@@ -62,6 +63,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/about" element={<About />} />
             <Route path="/contactos" element={<Contactos />} />
             <Route path="/chat" element={<Chat />} />
+            <Route path="/chat/perfil" element={<Perfil />} />
             <Route path="/sesion" element={<InicioSesion />} />
             <Route path="/resultados/:resCharIds/:resChapIds" element={<Resultados />} />
             <Route path="/registro" element={<Registro />} />
