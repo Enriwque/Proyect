@@ -44,22 +44,43 @@ async function updateUser(req, res) {
     let updatedPostsCount = 0;
 
     if (name && name.trim() !== userOldName.trim()) {
-      // Buscar posts con coincidencia robusta del nombre (ignorando mayúsculas y espacios)
-      const posts = await PostEntry.find();
+  const posts = await PostEntry.find();
 
-      const postsToUpdate = posts.filter(post =>
-        post.user.trim().toLowerCase() === userOldName.trim().toLowerCase()
-      );
+  const postsToUpdate = posts.filter(post =>
+    post.user.trim().toLowerCase() === userOldName.trim().toLowerCase() ||
+    post.comments(comment =>
+      comment.user && comment.user.trim().toLowerCase() === userOldName.trim().toLowerCase()
+    )
+  );
 
-      await Promise.all(
-        postsToUpdate.map(post => {
-          post.user = name;
-          return post.save();
-        })
-      );
+  await Promise.all(
+    postsToUpdate.map(async (post) => {
+      let updated = false;
 
-      updatedPostsCount = postsToUpdate.length;
-    }
+      // Actualiza autor del post si coincide
+      if (post.user.trim().toLowerCase() === userOldName.trim().toLowerCase()) {
+        post.user = name;
+        updated = true;
+      }
+
+      // Actualiza autores de comentarios si coinciden
+      post.comments.forEach((comment) => {
+        if (comment.user && comment.user.trim().toLowerCase() === userOldName.trim().toLowerCase()) {
+          comment.user = name;
+          updated = true;
+        }
+      });
+
+      if (updated) {
+        await post.save();
+      }
+
+      return post;
+    })
+  );
+
+  updatedPostsCount = postsToUpdate.length;
+}
 
     res.status(200).json({
       success: true,
