@@ -179,6 +179,6 @@ router.post('/forgot', frPassword);
  *       200:
  *         description: Password reset
  */
-router.post('/forgot/:reseToken', resPassword, validateToken);
+router.put('/forgot/:reseToken', resPassword, validateToken);
 
 export default router;

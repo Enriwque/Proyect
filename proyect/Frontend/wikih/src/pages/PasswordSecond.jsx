@@ -35,12 +35,12 @@ const submit = async (e) => {
     }
 
     try {
-        const response = await fetch(`https://proyect-7woy.onrender.com/api/v1/users/forgot/${reseToken}`, {
-            method: 'POST',
+        const response = await fetch(`http://localhost:2005/api/v1/users/forgot/${reseToken}`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ password })
+            body: JSON.stringify({ newPassword: password })
         });
 
         const contentType = response.headers.get('Content-Type');

@@ -166,7 +166,8 @@ async function frPassword(req, res) {
     if (!user) {res.status(400).send('Email not registered')};
 
     const reseToken = jwt.sign({
-        userEmail: user.email
+        userEmail: user.email,
+        userId: user.id
     }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
     const encodedToken = encodeURIComponent(reseToken);
@@ -187,27 +188,27 @@ async function frPassword(req, res) {
 }
 
 async function resPassword(req, res) {
-    const newPassword = req.body.newPassword;
-    const token = req.params.reseToken;
+  const newPassword = req.body.newPassword;
+  const token = req.params.reseToken;
 
-    try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        console.log(decoded);
-        
-        const user = await WikiUsers.findOne({ email: decoded.userEmail });
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    console.log(decoded);
+    
+    const user = await WikiUsers.findOne({ email: decoded.userEmail });
 
-        if (!user) {
-            return res.status(400).send('Invalid token or user does not exist');
-        }
-
-        user.password = await bcrypt.hash(newPassword, 10);
-        await user.save();
-
-        res.status(200).send('Password updated successfully');
-    // eslint-disable-next-line no-unused-vars
-    } catch (error) {
-        res.status(400).send('Invalid token');
+    if (!user) {
+      return res.status(400).json({ success: false, message: 'Token inválido o el usuario no existe' });
     }
+
+    user.password = await bcrypt.hash(newPassword, 10);
+    await user.save();
+
+    res.status(200).json({ success: true, message: 'Contraseña actualizada correctamente' });
+    
+  } catch (error) {
+    res.status(400).json({ success: false, message: 'Token inválido', error });
+  }
 }
 
 export { fetchUsers, fetchUser, updateUser, deleteUser, register, login, frPassword, resPassword };
