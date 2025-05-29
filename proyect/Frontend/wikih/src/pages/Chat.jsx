@@ -10,6 +10,8 @@ import '../page.css';
 export default function Chat() {
     const userStr = localStorage.getItem('user');
     const user = JSON.parse(userStr);
+    console.log(user);
+    
 
     const [commentText, setCommentText] = useState('');
     const [postText, setPostText] = useState('');

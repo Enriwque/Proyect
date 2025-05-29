@@ -300,8 +300,24 @@ a:hover {
 display: flex;
 flex-direction: column;
 align-items: center;
+background-color: #ffffff;
+padding-block-end: 20px;
+padding-inline: 20px;
 }
 
 .popup-content input {
 margin-block: 20px;
+}
+
+.popup-content label {
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  margin-inline: 20px;
+}
+
+.profile-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-block: 20px;
 }

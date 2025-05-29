@@ -10,6 +10,10 @@ import '../page.css';
 export default function Perfil() {
 
     const [openPostIndex, setOpenPostIndex] = useState(null);
+    const [showPopup, setShowPopup] = useState(false);
+    const [email, setEmail] = useState('');
+    const [edad, setEdad] = useState(0);
+    const [userName, setUserName] = useState('');
 
     const token = localStorage.getItem('token');
     const userId = token ? JSON.parse(atob(token.split('.')[1])).userId : null;
@@ -17,14 +21,18 @@ export default function Perfil() {
 
     console.log(userId);
 
-    const userStr = localStorage.getItem('user');
-    const user = JSON.parse(userStr);
+    
 
-    const data = useFetch('https://proyect-7woy.onrender.com/api/v1/posts');
 
-    if (!data.result) {
+    const postsData = useFetch('https://proyect-7woy.onrender.com/api/v1/posts');
+    const userData = useFetch(`https://proyect-7woy.onrender.com/api/v1/users/${userId}`);
+
+    if (!postsData.result || !userData.result) {
         return <p>Loading...</p>;
     }
+
+    const posts = postsData.result;
+    const userDat = userData.result[0];
 
     const toggleComments = (index) => {
         setOpenPostIndex(openPostIndex === index ? null : index);
@@ -45,6 +53,53 @@ export default function Perfil() {
         localStorage.removeItem('token_timestamp');
         window.location.href = '/';
     }
+
+    const editProfile = () => {
+    if (!userId || !token) {
+        console.warn('Faltan datos para actualizar el perfil');
+        return;
+    }
+
+    fetch(`https://proyect-7woy.onrender.com/api/v1/users/update/${userId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ name: userName, email, age: edad })
+    })
+    .then(async res => {
+                const contentType = res.headers.get("content-type");
+
+                if (!res.ok) {
+                    const text = await res.text();
+                    throw new Error(`Error HTTP ${res.status}: ${text}`);
+                }
+
+                if (contentType && contentType.includes("application/json")) {
+                    return await res.json();
+                } else {
+                    throw new Error('Respuesta no es JSON');
+                }
+            })
+    .then(data => {
+        if (data.success) {
+            setShowPopup(false);
+            toast.success('Perfil actualizado', toastTweaks);
+            window.location.reload();
+        } else {
+            localStorage.removeItem('user');
+            localStorage.setItem('user', JSON.stringify(data));
+            window.location.reload();
+            
+            toast.error('Error al actualizar el perfil', toastTweaks);
+        }
+    })
+    .catch(err => {
+        console.error('Error:', err);
+        toast.error('Error al actualizar el perfil', toastTweaks);
+    });
+};
 
     const removeAccount = async () => {
         alert('¿Estás seguro de que quieres eliminar tu cuenta? Esta acción no se puede deshacer.');
@@ -71,8 +126,11 @@ export default function Perfil() {
             })
             .then(data => {
                 if (data.success) {
-                    toast.success('Usuario eliminado correctamente', toastTweaks);
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('user');
+                    localStorage.removeItem('token_timestamp');
                     window.location.href = '/';
+                    toast.success('Usuario eliminado correctamente', toastTweaks);
                 } else {
                     toast.error('Error al eliminar el usuario', toastTweaks);
                 }
@@ -83,7 +141,7 @@ export default function Perfil() {
             });
     }
 
-    const posts = data.result;
+    
 
     function formatDate(initialDate) {
         const date = new Date(initialDate);
@@ -94,16 +152,40 @@ export default function Perfil() {
     }
 
     return (
-        <div className="container-form">
+        <div className="container-form" id="editProfile">
             <div>
-                <h2>Bienvenido: {user.name}</h2>
+                <h2>Bienvenido: {userDat.name}</h2>
 
                 <div>
                     <h3>Perfil</h3>
-                    <p><strong>Nombre:</strong> {user.name}</p>
-                    <p><strong>Email:</strong> {user.email}</p>
-                    <p><strong>Edad:</strong> {user.age ? user.age : 'desconocido'}</p>
+                    <p><strong>Nombre:</strong> {userDat.name}</p>
+                    <p><strong>Email:</strong> {userDat.email}</p>
+                    <p><strong>Edad:</strong> {userDat.age ? userDat.age : 'desconocido'}</p>
                 </div>
+
+                { showPopup && (
+                    <div className="popup-overlay" >
+                        <div className="popup-content">
+                            <h2>Editar perfil</h2>
+                            <form >
+                                <label>
+                                    Nombre:
+                                    <input type="text" name="name" defaultValue={userDat.name} onChange={(e) => setUserName(e.target.value)}/>
+                                </label>
+                                <label>
+                                    Email:
+                                    <input type="email" name="email" defaultValue={userDat.email} onChange={(e) => setEmail(e.target.value)}/>
+                                </label>
+                                <label>
+                                    Edad:
+                                    <input type="number" name="age" defaultValue={userDat.age} onChange={(e) => setEdad(e.target.value)}/>
+                                </label>
+                                <button type="button" onClick={editProfile}>Guardar cambios</button>
+                            </form>
+                            <button className="toggle-comment" onClick={() => setShowPopup(false)}>Cerrar</button>
+                        </div>
+                    </div>
+                )}
 
                 <div>
                     <h3>Tus posts</h3>
@@ -111,7 +193,7 @@ export default function Perfil() {
                     <div className="chat-container-profile">
                         {posts.map((post, index) => (
                             <div key={index}>
-                                {post.user === user.name && (
+                                {post.user === userDat.name && (
                                     <div className="post">
                                         <p>{post.user}</p>
                                         <p>{post.text}</p>
@@ -143,12 +225,18 @@ export default function Perfil() {
                     </div>
                 </div>
 
-                <div>
+                <div className="profile-buttons">
+                    <div>
                     <button className="toggle-comment" onClick={logOut}>Cerrar sesión</button>
                 </div>
 
                 <div>
+                    <a href="#editProfile"><button className="toggle-comment" onClick={() => setShowPopup(true)}>Editar perfil</button></a>
+                </div>
+
+                <div>
                     <button className="toggle-comment" onClick={removeAccount}>Eliminar cuenta</button>
+                </div>
                 </div>
             </div>
             <ToastContainer />

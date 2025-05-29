@@ -1,5 +1,7 @@
 import { usuarios } from "../models/users.js";
 import { WikiUsers } from "../services/index.js";
+import { PostEntry } from "../services/index.js";
+// import { wikiPosts } from "../models/Posts.js";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
@@ -16,25 +18,62 @@ async function fetchUser(req, res) {
 }
 
 async function updateUser(req, res) {
-    let goodRol = true;
+  try {
     const user = await WikiUsers.findOne({ id: req.params.id });
-    if(req.body.name){user.name = req.body.name};
-    if(req.body.email){user.email = req.body.email};
-    if(req.body.password){user.password = await bcrypt.hash(req.body.password, 10)};
-    if(req.body.age){user.age = req.body.age};
-    if(req.body.rol){
-        if(req.body.rol != 'admin' && req.body.rol != 'user' && req.body.rol != 'editor'){
-            goodRol = false;
-        }else{
-            user.rol = req.body.rol;
-        }
-    };
-    if(goodRol){
-        await user.save();
-        res.status(201).send(user);
-    }else{
-        res.status(400).send('Invalid rol');
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'Usuario no encontrado'
+      });
     }
+
+    const userOldName = user.name;
+
+    // Actualizar campos del usuario si se proporcionan
+    const { name, email, password, age } = req.body;
+
+    if (name) user.name = name;
+    if (email) user.email = email;
+    if (password) user.password = await bcrypt.hash(password, 10);
+    if (age) user.age = age;
+
+    await user.save();
+
+    // Actualizar nombre en los posts si ha cambiado
+    let updatedPostsCount = 0;
+
+    if (name && name.trim() !== userOldName.trim()) {
+      // Buscar posts con coincidencia robusta del nombre (ignorando mayúsculas y espacios)
+      const posts = await PostEntry.find();
+
+      const postsToUpdate = posts.filter(post =>
+        post.user.trim().toLowerCase() === userOldName.trim().toLowerCase()
+      );
+
+      await Promise.all(
+        postsToUpdate.map(post => {
+          post.user = name;
+          return post.save();
+        })
+      );
+
+      updatedPostsCount = postsToUpdate.length;
+    }
+
+    res.status(200).json({
+      success: true,
+      message: `Usuario actualizado correctamente${updatedPostsCount > 0 ? ` y ${updatedPostsCount} posts actualizados` : ', pero no se actualizaron posts'}`,
+      user
+    });
+
+  } catch (error) {
+    console.error('Error actualizando usuario:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Error interno del servidor'
+    });
+  }
 }
 
 async function register(req, res) {
