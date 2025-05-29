@@ -47,11 +47,11 @@ async function updateUser(req, res) {
   const posts = await PostEntry.find();
 
   const postsToUpdate = posts.filter(post =>
-    post.user.trim().toLowerCase() === userOldName.trim().toLowerCase() ||
-    post.comments(comment =>
-      comment.user && comment.user.trim().toLowerCase() === userOldName.trim().toLowerCase()
-    )
-  );
+  post.user.trim().toLowerCase() === userOldName.trim().toLowerCase() ||
+  (Array.isArray(post.comments) && post.comments.some(comment =>
+    comment.user && comment.user.trim().toLowerCase() === userOldName.trim().toLowerCase()
+  ))
+);
 
   await Promise.all(
     postsToUpdate.map(async (post) => {
