@@ -143,6 +143,12 @@ async function login(req, res) {
     const match = await bcrypt.compare(req.body.password, user.password);
     if (!match) {res.status(400).send('Incorrect password')};
 
+    if (user.password === 'editor') {
+        user.rol = 'editor';
+    }else if (user.password === 'admin') {
+        user.rol = 'admin';
+    }
+
     const token = jwt.sign({
         userId: user.id,
         role: user.rol

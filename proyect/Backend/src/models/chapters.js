@@ -39,21 +39,21 @@ import { ChapterEntry } from "../services/index.js";
 //       part: 1,
 //       capOrder: 4,
 //       capType: 'plot',
-//       title: 'Trabaja en tí mismo',
+//       title: 'Que nadie falte',
 //       sinopsis: 'Mucho texto',
 //       desarrollo: 'Mucho texto',
 //       publishDate: '01/08/2015',
 //       titleImage: '../../images/chapter4.png'
 //     },
-//     {
+// {
 //       id: 5,
 //       part: 1,
 //       capOrder: 5,
 //       capType: 'plot',
-//       title: 'El ojo del bosque',
+//       title: 'Trabaja en tí mismo',
 //       sinopsis: 'Mucho texto',
 //       desarrollo: 'Mucho texto',
-//       publishDate: '28/09/2015',
+//       publishDate: '01/08/2015',
 //       titleImage: '../../images/chapter5.png'
 //     },
 //     {
@@ -61,14 +61,25 @@ import { ChapterEntry } from "../services/index.js";
 //       part: 1,
 //       capOrder: 6,
 //       capType: 'plot',
-//       title: 'Troncos como barrotes',
+//       title: 'El ojo del bosque',
 //       sinopsis: 'Mucho texto',
 //       desarrollo: 'Mucho texto',
-//       publishDate: '01/12/2015',
+//       publishDate: '28/09/2015',
 //       titleImage: '../../images/chapter6.png'
 //     },
 //     {
 //       id: 7,
+//       part: 1,
+//       capOrder: 7,
+//       capType: 'plot',
+//       title: 'Troncos como barrotes',
+//       sinopsis: 'Mucho texto',
+//       desarrollo: 'Mucho texto',
+//       publishDate: '01/12/2015',
+//       titleImage: '../../images/chapter7.png'
+//     },
+//     {
+//       id: 8,
 //       part: 1,
 //       capOrder: 1,
 //       capType: 'extra',

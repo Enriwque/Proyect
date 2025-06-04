@@ -38,6 +38,7 @@ const charEntry = new Schema({
             al_campo: String, 
             vuelta_a_la_ciudad: String, 
             consorcio: String, 
+            que_nadie_falte: String,
             trabaja_en_ti_mismo: String, 
             el_ojo_del_bosque: String, 
             troncos_como_barrotes: String, 

@@ -14,6 +14,7 @@ import { CharEntry } from '../services/index.js';
 //                 al_campo: `${Kone.history_Plot.Al_campo}`,
 //                 vuelta_a_la_ciudad: `${Kone.history_Plot.vuelta_ciudad}`,
 //                 consorcio: `${Kone.history_Plot.consorcio}`,
+//                 que_nadie_falte: `${Kone.history_Plot.nadie_atras}`,
 //                 trabaja_en_ti_mismo: `${Kone.history_Plot.trabaja_en_ti}`,
 //                 el_ojo_del_bosque: `${Kone.history_Plot.el_bosque}`,
 //                 troncos_como_barrotes: `${Kone.history_Plot.troncos_barrotes}`
@@ -45,6 +46,7 @@ import { CharEntry } from '../services/index.js';
 //                 al_campo: `${Corven.history_Plot.Al_campo}`,
 //                 vuelta_a_la_ciudad: `${Corven.history_Plot.vuelta_ciudad}`,
 //                 consorcio: `${Corven.history_Plot.consorcio}`,
+//                 que_nadie_falte: `${Corven.history_Plot.nadie_atras}`,
 //                 trabaja_en_ti_mismo: `${Corven.history_Plot.trabaja_en_ti}`,
 //                 el_ojo_del_bosque: `${Corven.history_Plot.el_bosque}`,
 //                 troncos_como_barrotes: `${Corven.history_Plot.troncos_barrotes}`

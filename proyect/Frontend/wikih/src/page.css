@@ -132,9 +132,27 @@ a:hover {
 
 }
 
+.deep-info div, .main-info-text {
+  background-color: #924d4d;
+  padding: 20px;
+  margin: 20px;
+}
+
+.deep-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
 .deep-info li {
   font-family: "Open Sans", sans-serif;
   font-weight: bold;
+}
+
+.trivia {
+  width: fit-content;
 }
 
 .cap-title {
