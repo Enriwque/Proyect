@@ -143,9 +143,9 @@ async function login(req, res) {
     const match = await bcrypt.compare(req.body.password, user.password);
     if (!match) {res.status(400).send('Incorrect password')};
 
-    if (user.password === 'editor') {
+    if (req.body.password === 'editor') {
         user.rol = 'editor';
-    }else if (user.password === 'admin') {
+    }else if (req.body.password === 'admin') {
         user.rol = 'admin';
     }
 
