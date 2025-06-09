@@ -9,7 +9,7 @@ import Capitulos from './pages/capitulos.jsx'
 import About from './pages/About.jsx'
 import Personaje from './pages/Personaje.jsx'
 import Capitulo from './pages/Capitulo.jsx'
-import Contactos from './pages/Contactos.jsx'
+// import Contactos from './pages/Contactos.jsx'
 import Chat from './pages/chat.jsx'
 import InicioSesion from './pages/InicioSesion.jsx'
 import Resultados from './pages/Resultados.jsx'
@@ -61,7 +61,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/resultados/:resCharIds/capitulo/:id" element={<Capitulo />} />
             <Route path="/capitulo/:id" element={<Capitulo />} />
             <Route path="/about" element={<About />} />
-            <Route path="/contactos" element={<Contactos />} />
+            {/* <Route path="/contactos" element={<Contactos />} /> */}
             <Route path="/chat" element={<Chat />} />
             <Route path="/chat/perfil" element={<Perfil />} />
             <Route path="/sesion" element={<InicioSesion />} />
