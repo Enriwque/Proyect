@@ -1,0 +1,217 @@
+info:
+  name: Wikih API
+  schema: https://schema.getpostman.com/json/collection/v2.1.0/collection.json
+  description: Colección de endpoints para la API de Wikih
+item:
+  - name: Usuarios
+    item:
+      - name: Listar usuarios
+        request:
+          method: GET
+          url: '{{base_url}}/api/v1/users'
+      - name: Obtener usuario por ID
+        request:
+          method: GET
+          url: '{{base_url}}/api/v1/users/:id'
+      - name: Registrar usuario
+        request:
+          method: POST
+          url: '{{base_url}}/api/v1/users/register'
+          body:
+            mode: raw
+            raw: |-
+              {
+                "name": "Nombre",
+                "email": "correo@ejemplo.com",
+                "password": "1234",
+                "age": 25
+              }
+          header:
+            - key: Content-Type
+              value: application/json
+      - name: Login usuario
+        request:
+          method: POST
+          url: '{{base_url}}/api/v1/users/login'
+          body:
+            mode: raw
+            raw: |-
+              {
+                "email": "correo@ejemplo.com",
+                "password": "1234"
+              }
+          header:
+            - key: Content-Type
+              value: application/json
+      - name: Actualizar usuario
+        request:
+          method: PUT
+          url: '{{base_url}}/api/v1/users/update/:id'
+          body:
+            mode: raw
+            raw: |-
+              {
+                "name": "NuevoNombre",
+                "email": "nuevo@ejemplo.com",
+                "age": 26
+              }
+          header:
+            - key: Content-Type
+              value: application/json
+      - name: Eliminar usuario
+        request:
+          method: DELETE
+          url: '{{base_url}}/api/v1/users/delete/:id'
+      - name: Solicitar recuperación de contraseña
+        request:
+          method: POST
+          url: '{{base_url}}/api/v1/users/forgot'
+          body:
+            mode: raw
+            raw: |-
+              {
+                "email": "correo@ejemplo.com"
+              }
+          header:
+            - key: Content-Type
+              value: application/json
+      - name: Restablecer contraseña
+        request:
+          method: POST
+          url: '{{base_url}}/api/v1/users/forgot/:reseToken'
+          body:
+            mode: raw
+            raw: |-
+              {
+                "newPassword": "nuevaClave"
+              }
+          header:
+            - key: Content-Type
+              value: application/json
+  - name: Personajes
+    item:
+      - name: Listar personajes
+        request:
+          method: GET
+          url: '{{base_url}}/api/v1/wikih'
+      - name: Obtener personaje por ID
+        request:
+          method: GET
+          url: '{{base_url}}/api/v1/wikih/:id'
+      - name: Crear personaje
+        request:
+          method: POST
+          url: '{{base_url}}/api/v1/wikih/new/:token'
+          body:
+            mode: raw
+            raw: |-
+              {
+                "title": "Nombre",
+                "content": {},
+                "name": "Nombre",
+                "age": 10
+              }
+          header:
+            - key: Content-Type
+              value: application/json
+      - name: Actualizar personaje
+        request:
+          method: PUT
+          url: '{{base_url}}/api/v1/wikih/update/:id/:token'
+          body:
+            mode: raw
+            raw: |-
+              {
+                "title": "NuevoNombre",
+                "content": {}
+              }
+          header:
+            - key: Content-Type
+              value: application/json
+      - name: Eliminar personaje
+        request:
+          method: DELETE
+          url: '{{base_url}}/api/v1/wikih/delete/:id/:token'
+  - name: Capítulos
+    item:
+      - name: Listar capítulos
+        request:
+          method: GET
+          url: '{{base_url}}/api/v1/chapters'
+      - name: Obtener capítulo por ID
+        request:
+          method: GET
+          url: '{{base_url}}/api/v1/chapters/:id'
+      - name: Crear capítulo
+        request:
+          method: POST
+          url: '{{base_url}}/api/v1/chapters/new/:token'
+          body:
+            mode: raw
+            raw: |-
+              {
+                "title": "Título",
+                "part": 1,
+                "sinopsis": "Sinopsis",
+                "desarrollo": "Desarrollo"
+              }
+          header:
+            - key: Content-Type
+              value: application/json
+      - name: Actualizar capítulo
+        request:
+          method: PUT
+          url: '{{base_url}}/api/v1/chapters/update/:id/:token'
+          body:
+            mode: raw
+            raw: |-
+              {
+                "title": "Nuevo Título"
+              }
+          header:
+            - key: Content-Type
+              value: application/json
+      - name: Eliminar capítulo
+        request:
+          method: DELETE
+          url: '{{base_url}}/api/v1/chapters/delete/:id/:token'
+  - name: Publicaciones
+    item:
+      - name: Listar publicaciones
+        request:
+          method: GET
+          url: '{{base_url}}/api/v1/posts'
+      - name: Obtener publicación por ID
+        request:
+          method: GET
+          url: '{{base_url}}/api/v1/posts/:id'
+      - name: Crear publicación
+        request:
+          method: POST
+          url: '{{base_url}}/api/v1/posts/post/:token'
+          body:
+            mode: formdata
+            formdata:
+              - key: text
+                value: Texto del post
+                type: text
+      - name: Comentar publicación
+        request:
+          method: POST
+          url: '{{base_url}}/api/v1/posts/comment/:id/:token'
+          body:
+            mode: raw
+            raw: |-
+              {
+                "text": "Comentario"
+              }
+          header:
+            - key: Content-Type
+              value: application/json
+      - name: Eliminar publicación
+        request:
+          method: DELETE
+          url: '{{base_url}}/api/v1/posts/delete/:id/:token'
+variable:
+  - key: base_url
+    value: http://localhost:2005
