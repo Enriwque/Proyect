@@ -186,7 +186,7 @@ async function frPassword(req, res) {
         html: `
         <p>Haz click en el enlace de abajo para recuperar tu contraseña:</p>
         <br>
-        <a href="http://localhost:5173/password/${encodedToken}">Recuperar contraseña</a>
+        <a href="https://proyect-43lm.vercel.app/password/${encodedToken}">Recuperar contraseña</a>
         `
     });
     
