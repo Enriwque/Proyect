@@ -7,7 +7,7 @@ export default function MiniTarjetaCapitulo(props) {
     return (
         <div className="mini-chapter-card" style={{backgroundColor: "white"}}>
             <p>{chapter.title}</p>
-            <img src={chapter.titleImage} alt="imagen de titulo" />
+            
         </div>
     )
 }

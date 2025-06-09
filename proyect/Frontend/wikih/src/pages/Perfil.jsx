@@ -156,7 +156,7 @@ export default function Perfil() {
             <div>
                 <h2>Bienvenido: {userDat.name}</h2>
 
-                <div>
+                <div className="profile-info">
                     <h3>Perfil</h3>
                     <p><strong>Nombre:</strong> {userDat.name}</p>
                     <p><strong>Email:</strong> {userDat.email}</p>
@@ -180,7 +180,7 @@ export default function Perfil() {
                                     Edad:
                                     <input type="number" name="age" defaultValue={userDat.age} onChange={(e) => setEdad(e.target.value)}/>
                                 </label>
-                                <button type="button" onClick={editProfile}>Guardar cambios</button>
+                                <button type="button" onClick={editProfile} className="toggle-comment">Guardar cambios</button>
                             </form>
                             <button className="toggle-comment" onClick={() => setShowPopup(false)}>Cerrar</button>
                         </div>

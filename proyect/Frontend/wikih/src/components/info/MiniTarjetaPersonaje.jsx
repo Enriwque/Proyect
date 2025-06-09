@@ -9,7 +9,7 @@ export default function MiniTarjetaPersonaje(props) {
             <h2>{char.name}</h2>
             <div className="char-mini-desc" style={{backgroundColor: "white"}}>
                 <ul>
-                    <li>{char.age}</li>
+                    <li>{char.age} años</li>
                     <li>{char.species}</li>
                     <li>{char.sexo}</li>
                 </ul>

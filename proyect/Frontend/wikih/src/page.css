@@ -40,11 +40,11 @@ a:hover {
   text-align: center;
 }
 
-/* .mini-nav {
+.mini-nav {
   display: flex;
   justify-content: center;
   align-items: center;
-} */
+}
 
 .mini-nav table {
   display: flex;
@@ -70,6 +70,21 @@ a:hover {
 
 .imageChar {
   width: 400px;
+}
+
+@media (max-width: 768px) {
+  .imageChar {
+    visibility: hidden;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 }
 
 .mini-char-card {
@@ -99,6 +114,25 @@ a:hover {
   margin-left: 20px;
 }
 
+@media (max-width: 768px) {
+  .mini-char-card {
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+  }
+
+  .mini-char-card img {
+    width: 100%;
+    height: auto;
+    border-left: none;
+  }
+
+  .mini-char-card h2, .char-mini-desc {
+    text-align: left;
+    margin-left: 0;
+  }
+}
+
 .mini-chapter-card {
   margin-block: 10px;
   display: flex;
@@ -107,6 +141,14 @@ a:hover {
   width: 750px;
   font-family: "Open Sans", sans-serif;
   padding-inline: 10px;
+}
+
+@media (max-width: 768px) {
+  .mini-chapter-card {
+    flex-direction: column;
+    align-items: center;
+    width: 93%;
+  }
 }
 
 .main-info {
@@ -155,6 +197,56 @@ a:hover {
   width: fit-content;
 }
 
+#mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .main-info {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .main-info-img {
+    width: 75%;
+    text-align: center;
+  }
+
+  .main-info-img img {
+    width: 100%;
+    height: auto;
+    right: 10px;
+  }
+
+  .main-info-text {
+    width: 80%;
+    text-align: center;
+  }
+
+  .deep-info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .deep-info p {
+    text-align: center;
+  }
+
+  .trivia {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .trivia-list {
+    padding: 0;
+  }
+
+  #mobile {
+    display: block;
+  }
+}
+
 .cap-title {
   display: flex;
   justify-content: center;
@@ -165,11 +257,35 @@ a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .cap-mini div {
   border: solid 2px black;
+  background-color: #F5EEE2;
   padding: 20px;
+}
+
+.cap-char, .cap-info {
+  background-color: #924d4d;
+  padding: 20px;
+  margin: 20px;
+}
+
+.cap-info {
+  width: fit-content;
+}
+
+@media (max-width: 768px) {
+  .cap-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cap-info, .cap-char {
+    text-align: center;
+  }
 }
 
 .container-form {
@@ -216,10 +332,26 @@ a:hover {
   background-color: #b2ff00;
 }
 
+.form-group p {
+  text-align: center;
+}
+
 .content-results {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.content-results div {
+  max-width: fit-content;
+  margin: 20px;
+}
+
+@media (max-width: 768px) {
+  .content-results {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .buscador input {
@@ -240,11 +372,18 @@ a:hover {
   border: 1px solid #587e00;
 }
 
+@media (max-width: 768px) {
+  .buscador input, .buscador button {
+    margin-bottom: 10px;
+  }
+}
+
 .post {
   border: solid 2px black;
   background-color: #F5EEE2;
   padding: 20px;
   margin: 20px;
+  width: fit-content;
 }
 
 .comment {
@@ -325,6 +464,7 @@ padding-inline: 20px;
 
 .popup-content input {
 margin-block: 20px;
+margin-left: 5px;
 }
 
 .popup-content label {
@@ -338,4 +478,62 @@ margin-block: 20px;
   justify-content: center;
   align-items: center;
   margin-block: 20px;
+}
+
+@media (max-width: 768px) {
+
+  .chat-page {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chat-container img {
+    width: 100%;
+  }
+
+  .chat-container-profile img {
+    width: 100%;
+  }
+
+  .toggle-comments img {
+  width: 20px;
+}
+
+.profile-info {
+  text-align: center;
+}
+
+.popup-content form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+}
+
+.galery-item img {
+  width: 400px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.galery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-block: 50px;
+}
+
+.galery-item {
+  margin: 10px;
+  background-color: #F5EEE2;
+}
+
+@media (max-width: 768px) {
+  .galery-item img {
+    width: 300px;
+    height: auto;
+  }
 }

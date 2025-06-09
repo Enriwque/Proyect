@@ -4,7 +4,7 @@ import '../page.css'
 
 export default function About() {
     return (
-        <>
+        <div className="about-page">
         <h1>¿QUE ES ESTO?</h1>
         <h1>Te lo voy a poner sencillo</h1>
 
@@ -23,6 +23,10 @@ export default function About() {
             <h2>¿Pero de qué va?</h2>
 
             <p>¡Buena pregunta! Kone relata las aventuras de nuestro protagonista <a href="personaje/1">Kone</a>, en las cuales se embarca para volver a ver a sus padres. De mientras, Kone conoce a todos sus amigos y vive buenos momentos con ellos; como lo son <a href="personaje/2">Corven</a>, Tinia, Sara, Jilg etc. Sin embargo, tampoco es un camino de rosas; en varias ocasiones nuestro protagonista se ve obligado a adaptarse a nuevas circunstancias que le supondrán nuevas pruebas a superar; de estas pruebas Kone aprenderá lecciones de vida y conocerá las historias de sus amigos. No por nada la sinopsis de esta serie es "Embarcate en una tragicomedia que te enseñará lo loca que puede ser la vida de los demás".</p>
-        </>
+
+            <h2>¿Por qué son todos furros?</h2>
+
+            <p>¡Pues es algo tetrica la razón! 🤣 Para aclarar, la historia de nuestro protagonista ocurre en un mundo en donde la humanidad se extinguió hace 5000 años a causa de entrar en contacto con un componente radioactivo que se mezcló con el oxígeno poco a poco hasta mutar todo el aire. Esto causó que la humanidad se extinguiera, pero no los animales; estos mutaron lentamente causando que su cuerpo cambiase a una forma antropomórfica (al menos la mayoría) y su cerebro adquiriera la capacidad de razonar.</p>
+        </div>
     )
 }

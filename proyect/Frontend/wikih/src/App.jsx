@@ -2,6 +2,7 @@ import React from 'react'
 
 import useFetch from './services/fetch'
 import Buscador from './components/info/Buscador'
+import Galeria from './components/info/Galería'
 
 import './page.css'
 
@@ -35,7 +36,8 @@ function App() {
             </tr>
           </thead>
         </table>
-      </div>   
+      </div>  
+        <Galeria/>
     </>
   )
 }

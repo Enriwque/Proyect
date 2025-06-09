@@ -10,7 +10,7 @@ const router = Router();
  *     tags:
  *      - Users
  *     servers:
- *      - url: http://localhost:2005/api/v1/
+ *      - url: https://proyect-7woy.onrender.com/api/v1
  *     summary: Retrieve a list of users
  *     responses:
  *       200:
@@ -25,7 +25,7 @@ router.get('/', fetchUsers);
  *     tags:
  *      - Users
  *     servers:
- *      - url: http://localhost:2005/api/v1/
+ *      - url: https://proyect-7woy.onrender.com/api/v1
  *     summary: Retrieve a single user by ID
  *     parameters:
  *       - in: path
@@ -46,7 +46,7 @@ router.get('/:id', fetchUser);
  *     tags:
  *      - Users
  *     servers:
- *      - url: http://localhost:2005/api/v1/
+ *      - url: https://proyect-7woy.onrender.com/api/v1
  *     summary: Update a user by ID
  *     parameters:
  *       - in: path
@@ -84,7 +84,7 @@ router.put('/update/:id', updateUser);
  *     tags:
  *      - Users
  *     servers:
- *      - url: http://localhost:2005/api/v1/   
+ *      - url: https://proyect-7woy.onrender.com/api/v1   
  *     summary: Delete a user by ID
  *     parameters:
  *       - in: path
@@ -105,7 +105,7 @@ router.delete('/delete/:id', deleteUser);
  *     tags:
  *      - Users
  *     servers:
- *      - url: http://localhost:2005/api/v1/
+ *      - url: https://proyect-7woy.onrender.com/api/v1
  *     summary: Register a new user
  *     requestBody:
  *       required: true
@@ -137,7 +137,7 @@ router.post('/register', register);
  *     tags:
  *      - Users
  *     servers:
- *      - url: http://localhost:2005/api/v1/
+ *      - url: https://proyect-7woy.onrender.com/api/v1
  *     summary: Login a user
  *     responses:
  *       200:
@@ -152,7 +152,7 @@ router.post('/login', login);
  *     tags:
  *      - Users
  *     servers:
- *      - url: http://localhost:2005/api/v1/ 
+ *      - url: https://proyect-7woy.onrender.com/api/v1 
  *     summary: Request password reset
  *     responses:
  *       200:
@@ -167,7 +167,7 @@ router.post('/forgot', frPassword);
  *     tags:
  *      - Users
  *     servers:
- *      - url: http://localhost:2005/api/v1/   
+ *      - url: https://proyect-7woy.onrender.com/api/v1   
  *     summary: Reset password with token
  *     parameters:
  *       - in: path

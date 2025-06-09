@@ -7,7 +7,7 @@ import Navbar from './components/general/Navbar.jsx'
 import Personajes from './pages/Personajes.jsx'
 import Capitulos from './pages/capitulos.jsx'
 import About from './pages/About.jsx'
-import Personaje from './pages/personaje.jsx'
+import Personaje from './pages/Personaje.jsx'
 import Capitulo from './pages/Capitulo.jsx'
 import Contactos from './pages/contactos.jsx'
 import Chat from './pages/chat.jsx'
@@ -73,8 +73,8 @@ createRoot(document.getElementById('root')).render(
         </BrowserRouter>
       </div>
     </div>
-    <footer>
-      <Footer />
-    </footer>
+      <div className='main-footer'>
+        <Footer />
+      </div>
   </StrictMode>
 )

@@ -14,7 +14,7 @@ const router = Router();
  *     tags:
  *       - Posts
  *     servers:
- *       - url: http://localhost:2005/api/v1/
+ *       - url: https://proyect-7woy.onrender.com/api/v1
  *     summary: Retrieve a list of posts
  *     responses:
  *       200:
@@ -29,7 +29,7 @@ router.get('/', fetchPosts);
  *     tags:
  *       - Posts
  *     servers:
- *       - url: http://localhost:2005/api/v1/
+ *       - url: https://proyect-7woy.onrender.com/api/v1
  *     summary: Retrieve a single post by ID
  *     parameters:
  *       - in: path
@@ -51,7 +51,7 @@ router.get('/:id', fetchPost);
  *     tags:
  *       - Posts
  *     servers:
- *       - url: http://localhost:2005/api/v1/
+ *       - url: https://proyect-7woy.onrender.com/api/v1
  *     summary: Comment on a post
  *     parameters:
  *       - in: path
@@ -88,7 +88,7 @@ router.post('/comment/:id/:token', commentOnPost);
  *     tags:
  *       - Posts
  *     servers:
- *       - url: http://localhost:2005/api/v1/
+ *       - url: https://proyect-7woy.onrender.com/api/v1
  *     summary: Create a new post
  *     parameters:
  *       - in: path
@@ -123,7 +123,7 @@ router.post('/post/:token', upload.single('image'), createPost);
  *     tags:
  *       - Posts
  *     servers:
- *       - url: http://localhost:2005/api/v1/
+ *       - url: https://proyect-7woy.onrender.com/api/v1
  *     summary: Delete a post by ID
  *     parameters:
  *       - in: path
